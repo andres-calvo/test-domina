@@ -1,4 +1,3 @@
-import { useMediaQuery } from "hooks";
 import { createContext, useState } from "react";
 import { CameraIcons } from "./camera-icons";
 import { CameraMessage } from "./camera-message";
@@ -12,12 +11,11 @@ export const CameraContext = createContext({
   cameraFunctions: defaultFunctions,
   setCameraFunctions: (data: any) => {},
 });
-export const Camera = () => {
-  const isDesktop = useMediaQuery("(min-width:600px)");
-  const [imgA, setimgA] = useState("");
+export const Camera = ({ setImg }) => {
   const [cameraFunctions, setCameraFunctions] = useState(defaultFunctions);
+
   const onTakenPicture = (img) => {
-    setimgA(img);
+    setImg(img);
   };
   return (
     <CameraContext.Provider value={{ cameraFunctions, setCameraFunctions }}>

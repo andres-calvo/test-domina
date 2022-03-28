@@ -79,3 +79,36 @@ input {
   border: 1px solid #d4d4d4;
   min-height: 2rem;
 }
+.swal2-show {
+  border: solid 1.5px var(--main-color) !important;
+  -webkit-box-shadow: 4px 4px 17px -6px rgba(38, 38, 38, 1) !important;
+  -moz-box-shadow: 4px 4px 17px -6px rgba(38, 38, 38, 1) !important;
+  box-shadow: 4px 4px 17px -6px rgba(38, 38, 38, 1) !important;
+}
+
+.swal2-icon.swal2-success [class^="swal2-success-line"] {
+  background-color: var(--main-color) !important;
+}
+
+.swal2-icon.swal2-success .swal2-success-ring {
+  border: 0.25em solid var(--main-color) !important;
+}
+
+.swal2-html-container {
+  font-size: 22px;
+  font-family: var(--text-font) !important;
+}
+
+.swal2-show h2 {
+  font-family: var(--title-font) !important;
+  color: var(--main-color);
+  font-size: 26px;
+}
+
+.swal2-show button {
+  font-family: var(--text-font) !important;
+}
+
+.swal2-styled.swal2-confirm {
+  background-color: var(--main-color) !important;
+}

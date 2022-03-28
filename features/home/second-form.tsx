@@ -1,15 +1,34 @@
+import { useState } from "react";
 import { useForm } from "react-hook-form";
-import { Base64Service } from "../../services/base64.service";
+import Swal from "sweetalert2";
 import SignService from "../../services/sign.service";
 import { Camera } from "./camera";
 import styles from "./Home.module.scss";
 const signService = new SignService();
+
 export const SecondForm = ({ identification = "" }) => {
-  const { register, handleSubmit, setValue } = useForm();
+  const methods = useForm();
+  const { register, handleSubmit } = methods;
+  const [img, setImg] = useState("");
+
   const onSubmit = async (data, e) => {
-    const base64Service = new Base64Service();
-    const photo = await base64Service.toBase64(data.photo[0]);
-    await signService.validate({ ...data, photo, identification });
+    // console.log(data, img);
+    try {
+      await signService.validate({ ...data, photo: img, identification });
+      Swal.fire({
+        title: "Validación exitosa",
+        text: "La verificación de cédula ha finalizado exitosamente",
+        icon: "success",
+        confirmButtonText: "Aceptar",
+      });
+    } catch (error) {
+      Swal.fire({
+        title: "Error",
+        text: "La verificación de cédula ha fallado ",
+        icon: "error",
+        confirmButtonText: "Aceptar",
+      });
+    }
   };
   const onError = (errors, e) => console.log(errors, e);
   return (
@@ -23,24 +42,7 @@ export const SecondForm = ({ identification = "" }) => {
           })}
         />
       </label>
-      <Camera />
-      {/* <label className={styles.fileInput}>
-        Subir cedula
-        <input
-          type="file"
-          accept="image/png, image/jpeg"
-          {...register("photo", {
-            required: "La foto de la cédula es requerida",
-            validate: async (img) => {
-              const resp = await imageValidation(img[0]);
-              const valid = resp !== "Unknown filetype";
-              !valid && setValue("photo", null);
-
-              return valid;
-            },
-          })}
-        />
-      </label> */}
+      <Camera setImg={setImg} />
       <button type="submit">Enviar</button>
     </form>
   );
