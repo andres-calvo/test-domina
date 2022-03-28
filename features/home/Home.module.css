@@ -1,0 +1,36 @@
+.container {
+  padding: 0 2rem;
+}
+
+.main {
+  min-height: 100vh;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.firstForm {
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+}
+.secondForm {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+.fileInput {
+  padding: 10px 16px;
+  border-radius: 8px;
+  height: 40px;
+  line-height: 20px;
+  border: 1px solid rgb(109, 188, 165);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.fileInput input {
+  display: none;
+}
