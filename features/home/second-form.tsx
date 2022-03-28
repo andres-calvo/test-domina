@@ -4,17 +4,14 @@ import SignService from "../../services/sign.service";
 import { imageValidation } from "../../utils/image-validation";
 import styles from "./Home.module.css";
 const signService = new SignService();
-export const SecondForm = ({ identification }) => {
-  const { register, handleSubmit, watch, setValue } = useForm();
-  const watchForm = watch();
+export const SecondForm = ({ identification = "" }) => {
+  const { register, handleSubmit, setValue } = useForm();
   const onSubmit = async (data, e) => {
-    console.log(data, e);
     const base64Service = new Base64Service();
-    const photo = await base64Service.toBase64(data.photo);
-    await signService.validate({ ...data, identification });
+    const photo = await base64Service.toBase64(data.photo[0]);
+    await signService.validate({ ...data, photo, identification });
   };
   const onError = (errors, e) => console.log(errors, e);
-  console.log(watchForm["cedula"]);
   return (
     <form className={styles.secondForm} onSubmit={handleSubmit(onSubmit, onError)}>
       <label>
@@ -34,7 +31,7 @@ export const SecondForm = ({ identification }) => {
           {...register("photo", {
             required: "La foto de la cédula es requerida",
             validate: async (img) => {
-              const resp = await imageValidation(img);
+              const resp = await imageValidation(img[0]);
               const valid = resp !== "Unknown filetype";
               !valid && setValue("photo", null);
 

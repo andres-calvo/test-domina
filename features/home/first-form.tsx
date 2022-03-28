@@ -9,7 +9,6 @@ export const FirstForm = ({ setStage, setIdentification }) => {
       await signService.sendIdentification(data);
       setIdentification(data.identification);
       setStage(2);
-      console.log(data, e);
     } catch (error) {}
   };
   const onError = (errors, e) => console.log(errors, e);
