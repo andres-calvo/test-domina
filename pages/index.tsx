@@ -2,9 +2,9 @@ import type { NextPage } from "next";
 import Head from "next/head";
 import { useState } from "react";
 import { FirstForm, SecondForm } from "../features/home";
-import styles from "../features/home/Home.module.css";
+import styles from "../features/home/Home.module.scss";
 const Home: NextPage = () => {
-  const [stage, setStage] = useState(1);
+  const [stage, setStage] = useState(2);
   const [identification, setIdentification] = useState("");
   return (
     <div className={styles.container}>

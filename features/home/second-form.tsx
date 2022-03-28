@@ -1,8 +1,8 @@
 import { useForm } from "react-hook-form";
 import { Base64Service } from "../../services/base64.service";
 import SignService from "../../services/sign.service";
-import { imageValidation } from "../../utils/image-validation";
-import styles from "./Home.module.css";
+import { Camera } from "./camera";
+import styles from "./Home.module.scss";
 const signService = new SignService();
 export const SecondForm = ({ identification = "" }) => {
   const { register, handleSubmit, setValue } = useForm();
@@ -23,7 +23,8 @@ export const SecondForm = ({ identification = "" }) => {
           })}
         />
       </label>
-      <label className={styles.fileInput}>
+      <Camera />
+      {/* <label className={styles.fileInput}>
         Subir cedula
         <input
           type="file"
@@ -39,7 +40,7 @@ export const SecondForm = ({ identification = "" }) => {
             },
           })}
         />
-      </label>
+      </label> */}
       <button type="submit">Enviar</button>
     </form>
   );

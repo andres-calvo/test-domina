@@ -1,6 +1,6 @@
 import { useForm } from "react-hook-form";
 import SignService, { ISendIndentification } from "../../services/sign.service";
-import styles from "./Home.module.css";
+import styles from "./Home.module.scss";
 const signService = new SignService();
 export const FirstForm = ({ setStage, setIdentification }) => {
   const { register, handleSubmit } = useForm<ISendIndentification>();
