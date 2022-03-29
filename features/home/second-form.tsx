@@ -44,6 +44,7 @@ export const SecondForm = ({ identification = "" }) => {
         />
       </label>
       <Camera setImg={setImg} />
+      {/* {img && <img src={img} alt="" />} */}
       <button type="submit">Enviar</button>
     </form>
   );

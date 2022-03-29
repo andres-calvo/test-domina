@@ -36,7 +36,7 @@ export const CameraVideo = ({
     const width = getElementSize(webcamRef.current, "width");
     const height = getElementSize(webcamRef.current, "height");
     ctx.clearRect(0, 0, width, height);
-    ctx.transform(-1, 0, 0, 1, width, 0);
+    // ctx.transform(-1, 0, 0, 1, width, 0);
     // canvasRef.current.style.display = "none"
   };
   const takePicture = () => {
@@ -47,7 +47,7 @@ export const CameraVideo = ({
     const canvas = canvasRef.current;
     const ctx = canvas.getContext("2d");
     console.log(width, height);
-    ctx.transform(-1, 0, 0, 1, width, 0);
+    // ctx.transform(-1, 0, 0, 1, width, 0);
     ctx.drawImage(webcamRef.current, 0, 0, width, height);
     const image = canvas.toDataURL("image/png");
     // canvasRef.current.style.display = "block"
