@@ -3,7 +3,7 @@ export interface ISendIndentification {
   identification: string;
 }
 export interface IValidate extends ISendIndentification {
-  photo: string;
+  image: string;
   otpCode: string;
 }
 class SignService extends BaseService {

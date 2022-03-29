@@ -13,8 +13,9 @@ export const SecondForm = ({ identification = "" }) => {
 
   const onSubmit = async (data, e) => {
     // console.log(data, img);
+    const formattedImg = img.split("base64,")[1];
     try {
-      await signService.validate({ ...data, photo: img, identification });
+      await signService.validate({ ...data, image: formattedImg, identification });
       Swal.fire({
         title: "Validación exitosa",
         text: "La verificación de cédula ha finalizado exitosamente",
