@@ -20,6 +20,7 @@ export const Camera = ({ setImg }) => {
   return (
     <CameraContext.Provider value={{ cameraFunctions, setCameraFunctions }}>
       <div className={styles.wrapper}>
+        <img src="/images/icons/rectangulo.svg" className={styles.rectangle} />
         <CameraVideo onTakenPicture={onTakenPicture} />
         <div className={styles.bottom}>
           <CameraMessage />

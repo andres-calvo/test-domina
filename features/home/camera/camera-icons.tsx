@@ -1,10 +1,10 @@
-import React, { useContext } from "react"
-import { CameraContext } from "."
-import styles from "./camera.module.scss"
+import { useContext } from "react";
+import { CameraContext } from ".";
+import styles from "./camera.module.scss";
 export const CameraIcons = () => {
   const {
     cameraFunctions: { restartCamera, takePicture },
-  } = useContext(CameraContext)
+  } = useContext(CameraContext);
 
   return (
     <ul className={styles.icons}>
@@ -17,8 +17,8 @@ export const CameraIcons = () => {
         />
       </li>
       <li className={styles.icon}>
-        <img src="/images/icons/close.svg" alt="" onClick={takePicture} />
+        <img src="/images/icons/check.svg" alt="" onClick={takePicture} />
       </li>
     </ul>
-  )
-}
+  );
+};

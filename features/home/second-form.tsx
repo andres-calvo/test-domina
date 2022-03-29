@@ -25,7 +25,7 @@ export const SecondForm = ({ identification = "" }) => {
     } catch (error) {
       Swal.fire({
         title: "Error",
-        text: "La verificación de cédula ha fallado ",
+        text: "El documento ingresado no corresponde con la identificación del usuario",
         icon: "error",
         confirmButtonText: "Aceptar",
       });
@@ -44,7 +44,7 @@ export const SecondForm = ({ identification = "" }) => {
         />
       </label>
       <Camera setImg={setImg} />
-      {img && <img src={img} alt="" />}
+      {/* {img && <img src={img} alt="" />} */}
       <button type="submit">Enviar</button>
     </form>
   );
