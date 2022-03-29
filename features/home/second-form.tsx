@@ -13,7 +13,11 @@ export const SecondForm = ({ identification = "" }) => {
 
   const onSubmit = async (data, e) => {
     // console.log(data, img);
+    if (img.length == 0) {
+      return;
+    }
     const formattedImg = img.split("base64,")[1];
+
     try {
       await signService.validate({ ...data, image: formattedImg, identification });
       Swal.fire({
