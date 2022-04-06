@@ -6,7 +6,7 @@ import { Camera } from "./camera";
 import styles from "./Home.module.scss";
 const signService = new SignService();
 
-export const SecondForm = ({ identification = "" }) => {
+export const SecondForm = ({ orderNumber = "" }) => {
   const methods = useForm();
   const { register, handleSubmit } = methods;
   const [img, setImg] = useState("");
@@ -19,7 +19,7 @@ export const SecondForm = ({ identification = "" }) => {
     const formattedImg = img.split("base64,")[1];
 
     try {
-      await signService.validate({ ...data, image: formattedImg, identification });
+      await signService.validate({ ...data, image: formattedImg, orderNumber });
       Swal.fire({
         title: "Validación exitosa",
         text: "La verificación de cédula ha finalizado exitosamente",

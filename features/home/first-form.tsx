@@ -3,12 +3,12 @@ import Swal from "sweetalert2";
 import SignService, { ISendIndentification } from "../../services/sign.service";
 import styles from "./Home.module.scss";
 const signService = new SignService();
-export const FirstForm = ({ setStage, setIdentification }) => {
+export const FirstForm = ({ setStage, setOrderNumber }) => {
   const { register, handleSubmit } = useForm<ISendIndentification>();
   const onSubmit = async (data: ISendIndentification, e) => {
     try {
       await signService.sendIdentification(data);
-      setIdentification(data.identification);
+      setOrderNumber(data.orderNumber);
       setStage(2);
     } catch (error) {
       Swal.fire("Error", "La cedula ingresada no se encuentra registrada", "error");
@@ -18,10 +18,10 @@ export const FirstForm = ({ setStage, setIdentification }) => {
   return (
     <form className={styles.firstForm} onSubmit={handleSubmit(onSubmit, onError)}>
       <label>
-        Numero de identificación
+        Numero de pedido
         <input
           type="text"
-          {...register("identification", {
+          {...register("orderNumber", {
             required: "El numero de pedido es requerido",
           })}
           autoComplete="false"

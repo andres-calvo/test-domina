@@ -5,7 +5,7 @@ import { FirstForm, SecondForm } from "../features/home";
 import styles from "../features/home/Home.module.scss";
 const Home: NextPage = () => {
   const [stage, setStage] = useState(1);
-  const [identification, setIdentification] = useState("");
+  const [orderNumber, setOrderNumber] = useState("");
   return (
     <div className={styles.container}>
       <Head>
@@ -15,8 +15,8 @@ const Home: NextPage = () => {
       </Head>
 
       <main className={styles.main}>
-        {stage == 1 && <FirstForm setStage={setStage} setIdentification={setIdentification} />}
-        {stage == 2 && <SecondForm identification={identification} />}
+        {stage == 1 && <FirstForm setStage={setStage} setOrderNumber={setOrderNumber} />}
+        {stage == 2 && <SecondForm orderNumber={orderNumber} />}
       </main>
     </div>
   );

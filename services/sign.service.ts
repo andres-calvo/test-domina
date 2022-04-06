@@ -1,6 +1,6 @@
 import BaseService from "./base.service";
 export interface ISendIndentification {
-  identification: string;
+  orderNumber: string;
 }
 export interface IValidate extends ISendIndentification {
   image: string;
