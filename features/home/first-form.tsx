@@ -4,7 +4,10 @@ import SignService, { ISendIndentification } from "../../services/sign.service";
 import styles from "./Home.module.scss";
 const signService = new SignService();
 export const FirstForm = ({ setStage, setOrderNumber }) => {
-  const { register, handleSubmit } = useForm<ISendIndentification>();
+  const { register, handleSubmit, watch } = useForm<ISendIndentification>({
+    mode: "onChange",
+  });
+  const watchForm = watch();
   const onSubmit = async (data: ISendIndentification, e) => {
     try {
       await signService.sendIdentification(data);
@@ -28,7 +31,9 @@ export const FirstForm = ({ setStage, setOrderNumber }) => {
         />
       </label>
 
-      <button type="submit">Enviar</button>
+      <button type="submit" disabled={watchForm?.orderNumber?.length <= 3}>
+        Enviar
+      </button>
     </form>
   );
 };

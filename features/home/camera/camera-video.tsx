@@ -1,6 +1,6 @@
 import { useContext, useEffect, useRef } from "react";
 import getElementSize from "utils/get-element-size";
-import { CameraContext } from ".";
+import { CameraContext } from "../second-form";
 import styles from "./camera.module.scss";
 export const CameraVideo = ({
   onLoadSuccess = () => {},
@@ -55,6 +55,9 @@ export const CameraVideo = ({
     onTakenPicture(image);
     stopVideo();
   };
+  const shutDownCamera = () => {
+    streamRef.current.getTracks().forEach((track) => track.stop());
+  };
   useEffect(() => {
     main();
   }, []);
@@ -62,11 +65,12 @@ export const CameraVideo = ({
     setCameraFunctions({
       takePicture,
       restartCamera,
+      shutDownCamera,
     });
-  }, [webcamRef, canvasRef]);
+  }, [webcamRef, canvasRef, streamRef]);
 
   return (
-    <div className={styles.videoWrapper}>
+    <>
       <video
         ref={webcamRef}
         // width={sizeCamera.width}
@@ -86,7 +90,7 @@ export const CameraVideo = ({
         // height={sizeCamera.height}
         ref={canvasRef}
       ></canvas>
-    </div>
+    </>
   );
 };
 

@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import { CameraContext } from ".";
+import { CameraContext } from "../second-form";
 import styles from "./camera.module.scss";
 export const CameraIcons = () => {
   const {
